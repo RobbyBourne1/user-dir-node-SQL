@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Directory</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="directory">
+      <!-- <div class="dirInfo">
+        <img src="http://via.placeholder.com/350x150" alt="">
+        <div class="info">
+          <h2>Name</h2>
+          <p>Job Info</p>
+        </div>
+      </div> -->
+      {{#users}}
+      <a href="/info/{{name}}">
+      <div class="dirInfo">
+        <img src="{{avatar}}" alt="Directory Avatar">
+        <div class="info">
+          <h2>{{name}}</h2>
+          <p>{{#job}}{{job}}, {{company}}{{/job}}</p>
+          <p class="avail">{{^job}}Available For Hire{{/job}}</p>
+        </div>
+      </div>
+      </a>
+      {{/users}}
+    </div>
+  </div>
+</body>
+
+</html>

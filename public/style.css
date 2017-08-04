@@ -1,0 +1,152 @@
+.directory {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.dirInfo {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  border: .5px solid #666;
+  padding: 1em;
+  margin: .5em;
+  width: 10em;
+  height: 18em;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+  margin: .5em 0;
+}
+
+h2 {
+  color: blue;
+  font-size: 1em;
+  margin: 1em .35em;
+}
+
+p {
+  color: grey;
+  font-size: .75em;
+  margin: .35em;
+}
+.avail {
+  color: red;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Info Page CSS*/
+
+.img-name {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.info-page {
+  margin: 1em;
+}
+
+.name-info {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.contact-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  margin: 0;
+  width: 18em;
+}
+
+.row1 > p,
+.row2 > p {
+  margin: 0;
+}
+
+.row1,
+.row2 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.row1 > p:nth-child(2),
+.row2 > p:nth-child(1) {
+  padding-right: .35em;
+}
+
+.row1 > p:nth-child(3),
+.row2 > p:nth-child(2) {
+  border-left: 1px solid grey;
+  padding: 0 .5em;
+}
+
+.rounded-img {
+  border-radius: 50%;
+  margin: 1em;
+  border: thin solid #666;
+}
+
+ul {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+dl dt {
+  float: left;
+  font-weight: bold;
+  text-align: right;
+  display: block;
+  width: calc(150px + 1.5em);
+  margin-bottom: 0.5em;
+}
+
+dl dd {
+  margin-left: calc(150px + 3em);
+  margin-bottom: 0.5em;
+  color: grey;
+}
+
+/*li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20em;
+}
+
+.education {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.skills {
+  display: flex;
+  justify-content: flex-start;
+  color: grey;
+  font-size: .75em;
+}
+
+.skill-list {
+  width: 6em;
+  margin-right: 3.5em;
+}
+
+.skill {
+  margin-left: 2em;
+}
+
+h3 {
+  margin-right: 1em;
+}*/
