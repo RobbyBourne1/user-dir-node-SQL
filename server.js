@@ -1,8 +1,12 @@
 const express = require('express')
 const mustacheExpress = require('mustache-express')
 const data = require('./data.js')
+const bodyParser = require('body-parser')
+const expressSession = require('express-session')
+const pgPromise = require('pg-promise')()
 
 const app = express()
+const database = pgPromise({ database: 'robot-user-dir' })
 
 app.use(express.static('public'))
 
