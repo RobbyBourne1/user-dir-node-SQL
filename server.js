@@ -37,18 +37,13 @@ app.get('/', (request, response) => {
   })
 })
 
-// app.get('/info/:id', (request, response) => {
-//   const id = parseInt(request.params.id)
-//   database.one(`SELECT * from "robots" WHERE id = $(id)`{
-//     id: id
-//   })
-//   .then(robot =>{
-//     response.render('robotInfo', robot)
-//   })
-//   //   return person.name === request.params.name
-//   // var persons = robots.find(findPerson)
-//   response.render('info', persons)
-// })
+app.get('/info/:id/', (request, response) => {
+  const userId = request.params.id
+  console.log(userId)
+  database.one('SELECT * FROM "robots" WHERE id = $1', [userId]).then(robot => {
+    response.render('info', robot)
+  })
+})
 
 app.listen(3000, () => {
   console.log('Listening on port 3000')
