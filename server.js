@@ -4,25 +4,26 @@ const mustacheExpress = require('mustache-express')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const pgPromise = require('pg-promise')()
+const pg = require('pg')
 
 const app = express()
-const database = pgPromise({ database: 'robot-user-dir' })
+const database = pgPromise({ database: 'robot-db' })
 
 // CREATE TABLE robots ("id" SERIAL PRIMARY KEY,
 // ............................ "username" VARCHAR(100) NOT NULL,
-// ............................ "imageurl" VARCHAR(100) NULL,
+// ............................ "avatar" VARCHAR(100) NULL,
 // ............................ "email" VARCHAR(100) NULL,
 // ............................ "university" VARCHAR(100) NULL,
 // ............................ "street_number" VARCHAR(100) NULL,
-// ............................ "address" VARCHAR(100) NULL,
+// ............................ "street_name" VARCHAR(100) NULL,
 // ............................ "city" VARCHAR(100) NULL,
 // ............................ "state" VARCHAR(100) NULL,
 // ............................ "job" VARCHAR(100) NULL,
 // ............................ "company" VARCHAR(100) NULL,
 // ............................ "postal_code" VARCHAR(100) NULL,
-// ............................ "year_built" VARCHAR(100) NULL,
-// ............................ "next_service_date" VARCHAR(100) NULL,
-// ............................ "is_active" VARCHAR(100) NULL);
+// ............................ "country" VARCHAR(100)NULL,
+// ............................ "phone" VARCHAR(100)NULL,
+// ............................ "name" VARCHAR(100)NULL);
 
 app.use(express.static('public'))
 
@@ -31,7 +32,9 @@ app.set('views', './templates')
 app.set('view engine', 'mustache')
 
 app.get('/', (request, response) => {
-  response.render('index', data)
+  database.any(`SELECT * from robots`).then(robots => {
+    response.render('index', { robots })
+  })
 })
 
 app.get('/info/:name', (request, response) => {
