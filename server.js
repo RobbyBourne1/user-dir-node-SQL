@@ -32,18 +32,23 @@ app.set('views', './templates')
 app.set('view engine', 'mustache')
 
 app.get('/', (request, response) => {
-  database.any(`SELECT * from robots`).then(robots => {
+  database.any(`SELECT * from "robots"`).then(robots => {
     response.render('index', { robots })
   })
 })
 
-app.get('/info/:name', (request, response) => {
-  function findPerson(person) {
-    return person.name === request.params.name
-  }
-  var persons = data.users.find(findPerson)
-  response.render('info', persons)
-})
+// app.get('/info/:id', (request, response) => {
+//   const id = parseInt(request.params.id)
+//   database.one(`SELECT * from "robots" WHERE id = $(id)`{
+//     id: id
+//   })
+//   .then(robot =>{
+//     response.render('robotInfo', robot)
+//   })
+//   //   return person.name === request.params.name
+//   // var persons = robots.find(findPerson)
+//   response.render('info', persons)
+// })
 
 app.listen(3000, () => {
   console.log('Listening on port 3000')
