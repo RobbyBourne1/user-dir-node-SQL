@@ -87,6 +87,13 @@ app.post('/addId', (request, response) => {
   response.redirect('/')
 })
 
+app.delete('/info/:id', (request, response) => {
+  const id = request.params.id
+  database.one(`DELETE * FROM "robots" WHERE id = $1`, [id]).then(robot => {
+    response.redirect('/')
+  })
+})
+
 app.listen(3000, () => {
   console.log('It is alive!!!!')
 })
