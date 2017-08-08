@@ -1,7 +1,9 @@
-const url = 'info/:id'
+const url = '/info/'
 
-fetch(url, {method: delete}).then(reponse => response.json()).then(json => {
-  button.addEventListener('click', event => {
-    app.delete()
+document.querySelector('#deleteButton').addEventListener('click', function() {
+  let id = this.getAttribute('data-id')
+  let _url = url + id
+  fetch(_url, { method: 'delete' }).then(response => response.json()).then(json => {
+    console.log(json)
   })
 })
