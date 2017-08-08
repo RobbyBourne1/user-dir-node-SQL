@@ -38,13 +38,21 @@ app.get('/', (request, response) => {
 })
 
 app.get('/info/:id/', (request, response) => {
-  const userId = request.params.id
-  console.log(userId)
-  database.one('SELECT * FROM "robots" WHERE id = $1', [userId]).then(robot => {
-    response.render('info', robot)
-  })
+  const id = request.params.id
+  database
+    .one('SELECT * FROM "robots" WHERE id = $1', [id])
+    .then(robot => {
+      response.render('info', robot)
+    })
+    .catch(robot => {
+      response.render('input', robot)
+    })
+})
+
+app.post('/addId', (request, response) => {
+  response.send('Robot Added')
 })
 
 app.listen(3000, () => {
-  console.log('Listening on port 3000')
+  console.log('It is alive!!!!')
 })
