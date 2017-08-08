@@ -27,6 +27,9 @@ const database = pgPromise({ database: 'robot-db' })
 
 app.use(express.static('public'))
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.engine('mustache', mustacheExpress())
 app.set('views', './templates')
 app.set('view engine', 'mustache')
@@ -35,6 +38,10 @@ app.get('/', (request, response) => {
   database.any(`SELECT * from "robots"`).then(robots => {
     response.render('index', { robots })
   })
+})
+
+app.get('/addId', (request, response) => {
+  response.render('index', { robots })
 })
 
 app.get('/info/:id/', (request, response) => {
@@ -50,7 +57,34 @@ app.get('/info/:id/', (request, response) => {
 })
 
 app.post('/addId', (request, response) => {
-  response.send('Robot Added')
+  const insertRobot = {
+    username: request.body.username,
+    name: request.body.name,
+    avatar: request.body.avatar,
+    email: request.body.email,
+    university: request.body.university,
+    job: request.body.job,
+    company: request.body.company,
+    phone: request.body.phone,
+    street_number: request.body.street_number,
+    street_name: request.body.street_name,
+    city: request.body.city,
+    state: request.body.state,
+    postal_code: request.body.postal_code,
+    country: request.body.country
+  }
+  database
+    .one(
+      `INSERT INTO robots (username, name, avatar, email, university, job, company, phone, street_number,
+    street_name, city, state, postal_code, country)
+    VALUES($(username), $(name), $(avatar), $(email), $(university), $(job), $(company), $(phone),
+    $(street_number), $(street_name), $(city), $(state), $(postal_code), $(country)) RETURNING id`,
+      insertRobot
+    )
+    .then(insertRobotId => {
+      robot_id: insertRobotId.id
+    })
+  response.redirect('/')
 })
 
 app.listen(3000, () => {
