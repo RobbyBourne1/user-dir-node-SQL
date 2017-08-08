@@ -40,8 +40,8 @@ app.get('/', (request, response) => {
   })
 })
 
-app.get('/addId', (request, response) => {
-  response.render('index', { robots })
+app.get('/input', (request, response) => {
+  response.render('input')
 })
 
 app.get('/info/:id/', (request, response) => {
