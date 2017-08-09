@@ -49,6 +49,9 @@ a {
 
 .info-page {
   margin: 1em;
+  display: flex;
+  flex-flow: column;
+  width: 50%;
 }
 
 .name-info {
@@ -119,6 +122,18 @@ dl dd {
   color: grey;
 }
 
+.deleteButton {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#deleteButton {
+  width: 35%;
+  color: white;
+  background-color: red;
+}
+
 /*Submit Form*/
 
 .input-wrapper {
@@ -132,11 +147,12 @@ form {
   flex-flow: column;
   align-items: center;
   border: 1px solid #666;
-  width: 80%;
+  width: 65%;
   margin: 1em;
   padding: .5em;
   background-color: #bce7f5;
   border-radius: 5%;
+  color: #666;
 }
 
 input {

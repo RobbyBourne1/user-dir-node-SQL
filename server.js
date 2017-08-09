@@ -89,8 +89,9 @@ app.post('/addId', (request, response) => {
 
 app.delete('/info/:id', (request, response) => {
   const id = request.params.id
-  database.one(`DELETE FROM "robots" WHERE id = $1`, [id]).then(robot => {})
-  response.redirect('/')
+  database.one(`DELETE FROM "robots" WHERE id = $1`, [id]).then(robot => {
+    response.redirect('/')
+  })
 })
 
 app.listen(3000, () => {
